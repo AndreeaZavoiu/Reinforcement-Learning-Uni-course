@@ -1,0 +1,80 @@
+- 15-20 min de echipa => 5 min de persoana; nu trb sa intram mult in detalii
+- vrea sa prezinte fiecare ce a facut daca se poate
+- prima/a doua sapt - sesiune de prez
+
+
+Speech:
+Proiectul nostru se bazeaza pe o implementare de RL a jocului Minesweeper, gasita pe github. Noi fetele vom prezenta 4 articole despre RL 
+in jocuri video si apoi nisate pe Minesweeper, iar Sebastian rularea algoritmului si tehnicile de imbunatatire folosite.
+
+Articolul meu se numeste A survey of Deep Reinforcement Learning in Video Games, din 2019, si (NEXT) prezinta progresul metodelor DRL, 
+comparand principalele lor tehnici si proprietati, si progresul/achievement-ul DRL-ului in diverse jocuri video, de la clasicele Arcade games, 
+la first-person perspective games si real-time strategy games, de la single-agent la multi-agent, 2D sau 3D.
+
+Deep Reinforcement Learning este o combinatie intre deep learning si reinforcement learning, adica retele neurale cu inputuri de 
+dimensiuni foarte mari la fiecare pas si metode de machine learning unde agentii invata politica optima. De ce in jocuri? Pentru ca acestea 
+propun probleme complexe si interesante de rezolvat de catre agenti, deci sunt mediul perfect pentru AI research, rapide, cu date infinite, 
+iar environment-urile virtuale sunt sigure si controlabile.
+
+Articolul incepe cu un background pentru Deep learning si RL si prezinta metodele de RL studiate in jocuri, prin care voi trece rapid:
+value-based si policy-based. (NEXT)
+
+1. Value-based methods (- agentii actualizeaza value function-ul ca sa invete politica)
+	Aici este descris cel mai cunoscut model DRL: DQN - Deep Q-network - pe care l-am folosit si noi, imbunatatit in diferite aspecte la 
+Double DQN, Deep Recurent Q-network, The Least Squares DQN, QR-DRL adica Distributional reinforcement learning with Quantile regression 
+
+2. Policy-based methods (- agentii invata direct politica)
+	Cu Asynchronous DRL, UNsupervised REinforcement and Auxiliary Learning, IMPALA = Importance Weighted Actor Learner Architecture 
+
+3. Model-based methods
+	Care combina RL-ul model-free cu on-line planning-ul pentru a rezolva problema eficientei sample-urilor. 
+
+DRL IN VIDEO GAMES
+A. Game Research Platforms
+	Trecand la jocurile video, sunt prezentate platformele si competitiile pentru research, si voi aminti cateva: 
+Platformele Generale, unde vorbim mult despre ALE = Arcade Learning Environment care este pionierul platformelor pentru algoritmi DRL si e
+o interfata pentru jocurile Atari 2600, de asemenea: platforma Gym, OpenAI Universe, Unity ML-Agents Toolkit si altele. Platformele Specifice
+sunt Malmo pentru Minecraft, simulatorul de curse de masini TORCS, VizDoom si Google Research Football. 
+
+B. Atari Games
+	O atentie deosebita este oferita jocurilor Atari, in care DQN-ul atinge human-level performance in 49 de jocuri, UNREAL-ul depaseste
+cele mai bune performante anterioare, atingand performanta umana, Ape-X DQN obtine un scor final mai bun intr-un timp mai mic de antrenament, si asa mai departe.
+	Montezuma's Revenge este amintit deoarece este unul dintre cele mai dificile jocuri Atari, care a prezentat achievement-uri considerabile cu DRL.
+
+C. First-person perspective games
+	Care spre deosebire de jocurile Atari, pot primi observatii doar din perspectiva proprie, rezultand in inputuri cu informatie imperfecta.
+Cu exemplele din slide: ViZDoom cu jocurile first-person shooter, TORCS, Minecraft cu constructiile 3D, DeepMindLab cu jocurile 3D first-person.
+
+
+D. Real-time strategy games
+	printre care se numara StarCraft si MOBA (Multiplayer Online Battle Arena)
+
+
+CHALLENGES IN GAMES WITH DRL
+- Exploration-exploitation (explorare-exploatare) trade-off - este o provocare majoră pentru RL, deoarece metodele comune de explorare necesită 
+o cantitate mare de date și nu poate aborda explorarea extinsă temporal, dar combinand-o cu retelele neurale adanci o ajuta sa invete mult mai
+repede, imbunatatind viteza de invatare si performanta finala
+
+- Sample efficiency (eficienta esantionului) - aici Apare Hierarchical RL (HRL) care permite agenților să descompună sarcina în mai multe subsarcini
+simple, care pot accelera antrenamentul și pot îmbunătăți eficiența eșantionului
+
+- Generalization and Transfer - pt care IMPALA arată eficiența, folosind mai puține date și prezentând un transfer pozitiv între sarcini.
+
+- Multi-agent learning - unde blestemul dimensionalității, comunicarea și atribuirea creditelor sunt provocări majore. Recent, instruirea 
+centralizată a politicilor descentralizate devine o paradigmă standard pentru antrenarea multi-agent. 
+
+- Imperfect information - o componentă critică pentru a permite învățarea eficientă în aceste medii este utilizarea memoriei. Agenții DRL au folosit 
+niște arhitecturi de memorie simple, cum ar fi mai multe past frames sau un LSTM layer. Dar aceste arhitecturi sunt limitate să rețină doar informații
+tranzitorii. Controlul episoadelor fără modele învață sarcinile dificile de luare a deciziilor secvențiale mult mai rapid și obține o recompensă generală mai mare.
+
+- Delayed spare rewards - Recompensa rară și întârziată este foarte comună în multe jocuri și este unul dintre motivele care reduc sample 
+efficiency. În multe scenarii, cercetătorii folosesc curiozitatea ca recompensă intrinsecă pentru a încuraja agenții să exploreze mediul 
+și să învețe abilități utile, vizitand cât mai multe stari diferite în cadrul fiecărui episod, curiozitate ce poate fi formulată ca eroarea
+că agentul prezice consecințele propriilor acțiuni într-un spațiu vizual. 
+
+
+In concluzie, DRL are niste reusite extraordinare in domeniul jocurilor video, cu performante ce ating nivelul uman de joc, dar are si
+probleme de rezolvat, ce lasa loc cercetarilor permanente si imbunatatirilor, cu competitii precum cele prezentate in tabel.
+
+
+
